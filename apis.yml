@@ -1,0 +1,33 @@
+aid: backupify
+name: Backupify
+description: >-
+  Backupify (by Datto/Kaseya) is a SaaS backup platform providing automated cloud-to-cloud data protection for Google Workspace and Microsoft 365.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - SaaS Backup
+  - Data Protection
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/apis.yml
+created: '2026-03-27'
+modified: '2026-03-27'
+specificationVersion: '0.19'
+apis:
+  - aid: backupify:backupify
+    name: Backupify
+    description: >-
+      Backupify (by Datto/Kaseya) is a SaaS backup platform providing automated cloud-to-cloud data protection for Google Workspace and Microsoft 365.
+    humanURL: https://www.backupify.com
+    tags:
+      - SaaS Backup
+    properties:
+      - type: Documentation
+        url: https://www.backupify.com/resources
+common:
+  - type: Website
+    url: https://www.backupify.com
+  - type: Documentation
+    url: https://www.backupify.com/resources
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
