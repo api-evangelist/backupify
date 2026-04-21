@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-structure/saas-protection-api-bulk-seat-change-response-structure.json",
+  "name": "BulkSeatChangeResponse",
+  "description": "Results of bulk seat change operations",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SeatChangeResult"
+      }
+    }
+  }
+}

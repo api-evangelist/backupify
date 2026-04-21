@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-schema/saas-protection-api-domain-schema.json",
+  "title": "Domain",
+  "description": "A SaaS customer domain with backup subscription information",
+  "type": "object",
+  "properties": {
+    "saasCustomerId": {
+      "type": "string",
+      "description": "Unique SaaS customer identifier",
+      "example": "cust-001"
+    },
+    "externalSubscriptionId": {
+      "type": "string",
+      "description": "External subscription identifier for seat management",
+      "example": "sub-abc123"
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain name (e.g., company.onmicrosoft.com)",
+      "example": "company.onmicrosoft.com"
+    },
+    "status": {
+      "type": "string",
+      "description": "Domain backup status",
+      "example": "active"
+    }
+  }
+}

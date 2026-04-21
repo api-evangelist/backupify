@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-schema/saas-protection-api-bulk-seat-change-request-schema.json",
+  "title": "BulkSeatChangeRequest",
+  "description": "Request to change multiple seat licenses",
+  "type": "object",
+  "properties": {
+    "seats": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SeatChange"
+      },
+      "description": "List of seat changes (max 100 per request)"
+    }
+  }
+}

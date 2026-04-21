@@ -1,0 +1,330 @@
+openapi: 3.0.3
+info:
+  title: Backupify SaaS Protection API
+  description: >-
+    The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage
+    cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management,
+    subscription configuration, and backup domain administration for MSPs and enterprise
+    customers. Authentication uses HTTP Basic authentication with API key credentials.
+  version: v1
+  x-generated-from: documentation
+  contact:
+    name: Datto/Backupify Support
+    url: https://www.backupify.com/
+servers:
+  - url: https://api.datto.com
+    description: Datto SaaS Protection API
+security:
+  - BasicAuth: []
+tags:
+  - name: Domains
+    description: SaaS domain and customer account management
+  - name: Seats
+    description: User and resource seat licensing and management
+paths:
+  /v1/saas/domains:
+    get:
+      operationId: listDomains
+      summary: Backupify SaaS Protection API List Domains
+      description: Retrieves a list of SaaS customer domains with their customer IDs and external subscription information for seat management configuration.
+      tags:
+        - Domains
+      responses:
+        '200':
+          description: List of SaaS domains
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainsResponse'
+              examples:
+                ListDomains200Example:
+                  summary: Default listDomains 200 response
+                  x-microcks-default: true
+                  value:
+                    domains:
+                      - saasCustomerId: cust-001
+                        externalSubscriptionId: sub-abc123
+                        domain: company.onmicrosoft.com
+                        status: active
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/saas/{saasCustomerId}/seats:
+    get:
+      operationId: listSeats
+      summary: Backupify SaaS Protection API List Seats
+      description: Lists all seats (users, shared mailboxes, sites, team sites, teams) for a given SaaS customer. Returns remote IDs needed for licensing operations.
+      tags:
+        - Seats
+      parameters:
+        - name: saasCustomerId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique SaaS customer identifier
+          example: cust-001
+      responses:
+        '200':
+          description: List of seats for the customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeatsResponse'
+              examples:
+                ListSeats200Example:
+                  summary: Default listSeats 200 response
+                  x-microcks-default: true
+                  value:
+                    seats:
+                      - remoteId: user-abc123
+                        displayName: John Smith
+                        email: jsmith@company.com
+                        seatType: User
+                        licenseStatus: Licensed
+                        lastBackup: '2026-04-18T14:30:00Z'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Customer not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/saas/{saasCustomerId}/externalSubscriptionId/bulkSeatChange:
+    put:
+      operationId: bulkSeatChange
+      summary: Backupify SaaS Protection API Bulk Seat Change
+      description: Updates multiple Microsoft 365 or Google Workspace seats simultaneously. Supports licensing, unlicensing, and pausing up to 100 seats per request. Supported seat types include User, SharedMailbox, Site, TeamSite, and Team.
+      tags:
+        - Seats
+      parameters:
+        - name: saasCustomerId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique SaaS customer identifier
+          example: cust-001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkSeatChangeRequest'
+            examples:
+              BulkSeatChangeRequestExample:
+                summary: Default bulkSeatChange request
+                x-microcks-default: true
+                value:
+                  seats:
+                    - remoteId: user-abc123
+                      action: License
+                      seatType: User
+      responses:
+        '200':
+          description: Seat changes applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkSeatChangeResponse'
+              examples:
+                BulkSeatChange200Example:
+                  summary: Default bulkSeatChange 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                      - remoteId: user-abc123
+                        success: true
+                        message: Seat licensed successfully
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API public key as username and private key as password
+  schemas:
+    Domain:
+      title: Domain
+      type: object
+      description: A SaaS customer domain with backup subscription information
+      properties:
+        saasCustomerId:
+          type: string
+          description: Unique SaaS customer identifier
+          example: cust-001
+        externalSubscriptionId:
+          type: string
+          description: External subscription identifier for seat management
+          example: sub-abc123
+        domain:
+          type: string
+          description: The domain name (e.g., company.onmicrosoft.com)
+          example: company.onmicrosoft.com
+        status:
+          type: string
+          description: Domain backup status
+          example: active
+    DomainsResponse:
+      title: DomainsResponse
+      type: object
+      description: Response containing a list of SaaS domains
+      properties:
+        domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+    Seat:
+      title: Seat
+      type: object
+      description: A licensed or unlicensed seat (user, mailbox, site, or team)
+      properties:
+        remoteId:
+          type: string
+          description: Remote identifier for the seat in the source system
+          example: user-abc123
+        displayName:
+          type: string
+          description: Display name of the seat
+          example: John Smith
+        email:
+          type: string
+          format: email
+          description: Email address for user seats
+          example: jsmith@company.com
+        seatType:
+          type: string
+          enum:
+            - User
+            - SharedMailbox
+            - Site
+            - TeamSite
+            - Team
+          description: Type of seat
+          example: User
+        licenseStatus:
+          type: string
+          enum:
+            - Licensed
+            - Unlicensed
+            - Paused
+          description: Current license status
+          example: Licensed
+        lastBackup:
+          type: string
+          format: date-time
+          description: Timestamp of last successful backup
+          example: '2026-04-18T14:30:00Z'
+    SeatsResponse:
+      title: SeatsResponse
+      type: object
+      description: Response containing a list of seats for a customer
+      properties:
+        seats:
+          type: array
+          items:
+            $ref: '#/components/schemas/Seat'
+    SeatChange:
+      title: SeatChange
+      type: object
+      description: A single seat change action
+      properties:
+        remoteId:
+          type: string
+          description: Remote identifier for the seat
+          example: user-abc123
+        action:
+          type: string
+          enum:
+            - License
+            - Unlicense
+            - Pause
+          description: Action to perform on the seat
+          example: License
+        seatType:
+          type: string
+          enum:
+            - User
+            - SharedMailbox
+            - Site
+            - TeamSite
+            - Team
+          description: Type of seat
+          example: User
+    BulkSeatChangeRequest:
+      title: BulkSeatChangeRequest
+      type: object
+      description: Request to change multiple seat licenses
+      properties:
+        seats:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeatChange'
+          description: List of seat changes (max 100 per request)
+    SeatChangeResult:
+      title: SeatChangeResult
+      type: object
+      description: Result of a single seat change operation
+      properties:
+        remoteId:
+          type: string
+          description: Remote identifier for the seat
+          example: user-abc123
+        success:
+          type: boolean
+          description: Whether the operation succeeded
+          example: true
+        message:
+          type: string
+          description: Description of the result
+          example: Seat licensed successfully
+    BulkSeatChangeResponse:
+      title: BulkSeatChangeResponse
+      type: object
+      description: Results of bulk seat change operations
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeatChangeResult'
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized

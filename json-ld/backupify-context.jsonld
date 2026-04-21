@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bkp": "https://api.datto.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "BulkSeatChangeRequest": "bkp:BulkSeatChangeRequest",
+    "BulkSeatChangeResponse": "bkp:BulkSeatChangeResponse",
+    "Domain": "bkp:Domain",
+    "DomainsResponse": "bkp:DomainsResponse",
+    "Seat": "bkp:Seat",
+    "SeatChange": "bkp:SeatChange",
+    "SeatChangeResult": "bkp:SeatChangeResult",
+    "SeatsResponse": "bkp:SeatsResponse",
+    "action": {
+      "@id": "bkp:action",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "bkp:displayName",
+      "@type": "xsd:string"
+    },
+    "domain": {
+      "@id": "bkp:domain",
+      "@type": "xsd:string"
+    },
+    "domains": {
+      "@id": "bkp:domains",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "externalSubscriptionId": {
+      "@id": "bkp:externalSubscriptionId",
+      "@type": "xsd:string"
+    },
+    "lastBackup": {
+      "@id": "bkp:lastBackup",
+      "@type": "xsd:dateTime"
+    },
+    "licenseStatus": {
+      "@id": "bkp:licenseStatus",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "bkp:message",
+      "@type": "xsd:string"
+    },
+    "remoteId": {
+      "@id": "bkp:remoteId",
+      "@type": "xsd:string"
+    },
+    "results": {
+      "@id": "bkp:results",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "saasCustomerId": {
+      "@id": "bkp:saasCustomerId",
+      "@type": "xsd:string"
+    },
+    "seatType": {
+      "@id": "bkp:seatType",
+      "@type": "xsd:string"
+    },
+    "seats": {
+      "@id": "bkp:seats",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "bkp:status",
+      "@type": "xsd:string"
+    },
+    "success": {
+      "@id": "bkp:success",
+      "@type": "xsd:boolean"
+    }
+  }
+}

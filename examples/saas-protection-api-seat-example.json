@@ -1,0 +1,8 @@
+{
+  "remoteId": "user-abc123",
+  "displayName": "John Smith",
+  "email": "jsmith@company.com",
+  "seatType": "User",
+  "licenseStatus": "Licensed",
+  "lastBackup": "2026-04-18T14:30:00Z"
+}

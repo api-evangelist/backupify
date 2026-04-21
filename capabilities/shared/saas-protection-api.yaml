@@ -1,0 +1,148 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Backupify SaaS Protection API"
+  description: "Backupify (Datto) SaaS Protection REST API for managing Microsoft 365 and Google Workspace backup domains and seat licensing."
+  tags:
+    - Backupify
+    - Datto
+    - SaaS Backup
+    - Data Protection
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      BACKUPIFY_API_KEY: BACKUPIFY_API_KEY
+      BACKUPIFY_API_SECRET: BACKUPIFY_API_SECRET
+
+capability:
+  consumes:
+    - type: http
+      namespace: backupify-saas-api
+      baseUri: https://api.datto.com
+      description: "Backupify SaaS Protection API v1"
+      authentication:
+        type: basic
+        username: "{{BACKUPIFY_API_KEY}}"
+        password: "{{BACKUPIFY_API_SECRET}}"
+      resources:
+        - name: domains
+          path: /v1/saas/domains
+          description: SaaS customer domain listing
+          operations:
+            - name: list-domains
+              method: GET
+              description: List all SaaS customer domains with IDs and subscription info
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: seats
+          path: /v1/saas/{saasCustomerId}/seats
+          description: Seat listing for a customer
+          operations:
+            - name: list-seats
+              method: GET
+              description: List seats for a given SaaS customer
+              inputParameters:
+                - name: saasCustomerId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: bulk-seat-change
+          path: /v1/saas/{saasCustomerId}/externalSubscriptionId/bulkSeatChange
+          description: Bulk seat licensing management
+          operations:
+            - name: bulk-seat-change
+              method: PUT
+              description: License, unlicense, or pause up to 100 seats at once
+              inputParameters:
+                - name: saasCustomerId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  seats: "{{tools.seats}}"
+
+  exposes:
+    - type: rest
+      port: 8120
+      namespace: backupify-rest
+      resources:
+        - path: /v1/domains
+          name: domains
+          description: SaaS backup domains
+          operations:
+            - method: GET
+              name: list-domains
+              description: List backup domains
+              call: "backupify-saas-api.list-domains"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/customers/{saasCustomerId}/seats
+          name: seats
+          description: Customer seats
+          operations:
+            - method: GET
+              name: list-seats
+              description: List seats for a customer
+              call: "backupify-saas-api.list-seats"
+              with:
+                saasCustomerId: "rest.saasCustomerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9120
+      namespace: backupify-mcp
+      transport: http
+      tools:
+        - name: list-domains
+          description: List all SaaS backup domains with customer IDs and subscription info
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "backupify-saas-api.list-domains"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-seats
+          description: List all backup seats for a specific SaaS customer
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "backupify-saas-api.list-seats"
+          with:
+            saasCustomerId: "tools.saasCustomerId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: bulk-seat-change
+          description: License, unlicense, or pause multiple backup seats for a customer (max 100 per request)
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "backupify-saas-api.bulk-seat-change"
+          with:
+            saasCustomerId: "tools.saasCustomerId"
+            seats: "tools.seats"
+          outputParameters:
+            - type: object
+              mapping: "$."

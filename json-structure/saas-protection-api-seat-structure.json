@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-structure/saas-protection-api-seat-structure.json",
+  "name": "Seat",
+  "description": "A licensed or unlicensed seat (user, mailbox, site, or team)",
+  "type": "object",
+  "properties": {
+    "remoteId": {
+      "type": "string",
+      "description": "Remote identifier for the seat in the source system",
+      "example": "user-abc123"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name of the seat",
+      "example": "John Smith"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address for user seats",
+      "example": "jsmith@company.com"
+    },
+    "seatType": {
+      "type": "string",
+      "enum": [
+        "User",
+        "SharedMailbox",
+        "Site",
+        "TeamSite",
+        "Team"
+      ],
+      "description": "Type of seat",
+      "example": "User"
+    },
+    "licenseStatus": {
+      "type": "string",
+      "enum": [
+        "Licensed",
+        "Unlicensed",
+        "Paused"
+      ],
+      "description": "Current license status",
+      "example": "Licensed"
+    },
+    "lastBackup": {
+      "type": "datetime",
+      "description": "Timestamp of last successful backup",
+      "example": "2026-04-18T14:30:00Z"
+    }
+  }
+}

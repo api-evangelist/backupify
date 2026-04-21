@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-structure/saas-protection-api-domains-response-structure.json",
+  "name": "DomainsResponse",
+  "description": "Response containing a list of SaaS domains",
+  "type": "object",
+  "properties": {
+    "domains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Domain"
+      }
+    }
+  }
+}

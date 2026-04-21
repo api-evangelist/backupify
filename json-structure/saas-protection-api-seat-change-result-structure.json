@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-structure/saas-protection-api-seat-change-result-structure.json",
+  "name": "SeatChangeResult",
+  "description": "Result of a single seat change operation",
+  "type": "object",
+  "properties": {
+    "remoteId": {
+      "type": "string",
+      "description": "Remote identifier for the seat",
+      "example": "user-abc123"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the operation succeeded",
+      "example": true
+    },
+    "message": {
+      "type": "string",
+      "description": "Description of the result",
+      "example": "Seat licensed successfully"
+    }
+  }
+}

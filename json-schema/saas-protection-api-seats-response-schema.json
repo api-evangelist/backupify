@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-schema/saas-protection-api-seats-response-schema.json",
+  "title": "SeatsResponse",
+  "description": "Response containing a list of seats for a customer",
+  "type": "object",
+  "properties": {
+    "seats": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Seat"
+      }
+    }
+  }
+}

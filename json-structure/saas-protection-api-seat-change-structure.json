@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-structure/saas-protection-api-seat-change-structure.json",
+  "name": "SeatChange",
+  "description": "A single seat change action",
+  "type": "object",
+  "properties": {
+    "remoteId": {
+      "type": "string",
+      "description": "Remote identifier for the seat",
+      "example": "user-abc123"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "License",
+        "Unlicense",
+        "Pause"
+      ],
+      "description": "Action to perform on the seat",
+      "example": "License"
+    },
+    "seatType": {
+      "type": "string",
+      "enum": [
+        "User",
+        "SharedMailbox",
+        "Site",
+        "TeamSite",
+        "Team"
+      ],
+      "description": "Type of seat",
+      "example": "User"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Backupify"
+  description: "Taxonomy for Backupify (Datto) SaaS Protection API covering cloud-to-cloud backup domain management and seat licensing for Microsoft 365 and Google Workspace."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: backupify-saas-api
+      label: Backupify SaaS Protection API
+      version: v1
+      baseUrl: https://api.datto.com
+      status: active
+
+  resources:
+    - name: domains
+      description: SaaS backup customer domains with subscription and customer ID information
+      apis: [backupify-saas-api]
+      actions: [list]
+    - name: seats
+      description: Individual backup seats including users, shared mailboxes, sites, team sites, and teams
+      apis: [backupify-saas-api]
+      actions: [list, license, unlicense, pause]
+
+  actions:
+    - name: list
+      description: Retrieve a list of resources
+      methods: [GET]
+      pattern: read
+    - name: license
+      description: Enable backup protection for a seat
+      methods: [PUT]
+      pattern: write
+    - name: unlicense
+      description: Remove backup protection from a seat
+      methods: [PUT]
+      pattern: write
+    - name: pause
+      description: Temporarily suspend backup for a seat without removing license
+      methods: [PUT]
+      pattern: write
+
+  schemas:
+    core:
+      - name: Domain
+        description: A SaaS backup customer domain
+        key_properties: [saasCustomerId, externalSubscriptionId, domain, status]
+      - name: Seat
+        description: A backup seat (user, mailbox, site, or team)
+        key_properties: [remoteId, displayName, email, seatType, licenseStatus, lastBackup]
+
+  enums:
+    seat-types:
+      - User
+      - SharedMailbox
+      - Site
+      - TeamSite
+      - Team
+    seat-actions:
+      - License
+      - Unlicense
+      - Pause
+    license-status:
+      - Licensed
+      - Unlicensed
+      - Paused
+
+  authentication:
+    schemes:
+      - name: BasicAuth
+        type: basic
+        description: HTTP Basic auth using API public key as username and private key as password
+
+capability:
+  workflows:
+    - name: SaaS Backup Management
+      file: capabilities/saas-backup-management.yaml
+      description: Domain and seat management for Backupify cloud-to-cloud backup
+      apis_combined: [backupify-saas-api]
+      tool_count: 3
+      personas: [MSP Technician, IT Administrator]
+      domains: [Data Protection, SaaS Backup]
+
+  personas:
+    - id: msp-technician
+      name: MSP Technician
+      description: Managed service provider technician managing backup coverage across customer accounts
+      workflows: [SaaS Backup Management]
+    - id: it-administrator
+      name: IT Administrator
+      description: Enterprise IT admin managing backup seat coverage for Microsoft 365 or Google Workspace
+      workflows: [SaaS Backup Management]
+
+  domains:
+    - name: Data Protection
+      description: Cloud-to-cloud backup and recovery for SaaS platforms
+      resources: [domains, seats]
+      workflows: [SaaS Backup Management]
+
+  namespaces:
+    - namespace: backupify-saas-api
+      type: consumed
+    - namespace: backupify-backup-api
+      type: rest-exposed
+      port: 8080
+    - namespace: backupify-backup-mcp
+      type: mcp-exposed
+      port: 9080
+
+  binds:
+    - name: BACKUPIFY_API_KEY
+      description: Backupify API public key
+      workflows: [SaaS Backup Management]
+    - name: BACKUPIFY_API_SECRET
+      description: Backupify API private key
+      workflows: [SaaS Backup Management]
+
+crossReference:
+  - resource: domains
+    operations: [listDomains]
+    workflows: [SaaS Backup Management]
+    personas: [MSP Technician, IT Administrator]
+  - resource: seats
+    operations: [listSeats, bulkSeatChange]
+    workflows: [SaaS Backup Management]
+    personas: [MSP Technician, IT Administrator]

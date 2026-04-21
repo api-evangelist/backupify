@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/json-schema/saas-protection-api-seat-change-result-schema.json",
+  "title": "SeatChangeResult",
+  "description": "Result of a single seat change operation",
+  "type": "object",
+  "properties": {
+    "remoteId": {
+      "type": "string",
+      "description": "Remote identifier for the seat",
+      "example": "user-abc123"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the operation succeeded",
+      "example": true
+    },
+    "message": {
+      "type": "string",
+      "description": "Description of the result",
+      "example": "Seat licensed successfully"
+    }
+  }
+}
