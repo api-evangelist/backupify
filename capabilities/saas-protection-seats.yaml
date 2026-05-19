@@ -1,0 +1,130 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Backupify SaaS Protection API — Seats
+  description: 'Backupify SaaS Protection API — Seats. 2 operations. Lead operation: Backupify SaaS Protection API Bulk Seat
+    Change. Self-contained Naftiko capability covering one Backupify business surface.'
+  tags:
+  - Backupify
+  - Seats
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BACKUPIFY_API_KEY: BACKUPIFY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: saas-protection-seats
+    baseUri: https://api.datto.com
+    description: Backupify SaaS Protection API — Seats business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-saas-saasCustomerId-externalSubscriptionId-bulkSeatChange
+      path: /v1/saas/{saasCustomerId}/externalSubscriptionId/bulkSeatChange
+      operations:
+      - name: bulkseatchange
+        method: PUT
+        description: Backupify SaaS Protection API Bulk Seat Change
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: saasCustomerId
+          in: path
+          type: string
+          description: The unique SaaS customer identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-saas-saasCustomerId-seats
+      path: /v1/saas/{saasCustomerId}/seats
+      operations:
+      - name: listseats
+        method: GET
+        description: Backupify SaaS Protection API List Seats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: saasCustomerId
+          in: path
+          type: string
+          description: The unique SaaS customer identifier
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.BACKUPIFY_USER}}'
+      password: '{{env.BACKUPIFY_PASS}}'
+  exposes:
+  - type: rest
+    namespace: saas-protection-seats-rest
+    port: 8080
+    description: REST adapter for Backupify SaaS Protection API — Seats. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/saas/{saascustomerid}/externalsubscriptionid/bulkseatchange
+      name: v1-saas-saascustomerid-externalsubscriptionid-bulkseatchange
+      description: REST surface for v1-saas-saasCustomerId-externalSubscriptionId-bulkSeatChange.
+      operations:
+      - method: PUT
+        name: bulkseatchange
+        description: Backupify SaaS Protection API Bulk Seat Change
+        call: saas-protection-seats.bulkseatchange
+        with:
+          saasCustomerId: rest.saasCustomerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/saas/{saascustomerid}/seats
+      name: v1-saas-saascustomerid-seats
+      description: REST surface for v1-saas-saasCustomerId-seats.
+      operations:
+      - method: GET
+        name: listseats
+        description: Backupify SaaS Protection API List Seats
+        call: saas-protection-seats.listseats
+        with:
+          saasCustomerId: rest.saasCustomerId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: saas-protection-seats-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Backupify SaaS Protection API — Seats. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: backupify-saas-protection-api-bulk
+      description: Backupify SaaS Protection API Bulk Seat Change
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: saas-protection-seats.bulkseatchange
+      with:
+        saasCustomerId: tools.saasCustomerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: backupify-saas-protection-api-list
+      description: Backupify SaaS Protection API List Seats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: saas-protection-seats.listseats
+      with:
+        saasCustomerId: tools.saasCustomerId
+      outputParameters:
+      - type: object
+        mapping: $.
