@@ -2,12 +2,20 @@
   "repo": "backupify",
   "feeds": [
     {
-      "source": "https://www.datto.com/blog/",
+      "source": "https://www.datto.com/blog/feed/",
       "feed_url": "https://www.datto.com/blog/feed/",
-      "title": "MSP Tech Blog | Best Practices and for Managed Service Providers",
-      "saved": 5
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.backupify.com/pricing",
+      "feed_url": "https://www.backupify.com/pricing",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 14,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
