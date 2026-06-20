@@ -5,7 +5,7 @@ description: Backupify (by Datto/Kaseya) is a SaaS backup platform providing aut
   team sites, and Microsoft Teams. The SaaS Protection REST API enables MSPs and enterprise IT teams to automate domain administration
   and seat licensing programmatically.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - SaaS Backup
 - Data Protection
