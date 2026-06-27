@@ -33,9 +33,9 @@ apis:
     url: https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm
   - type: OpenAPI
     url: openapi/backupify-saas-protection-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/saas-protection-domains.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/saas-protection-seats.yaml
 common:
 - type: LinkedIn
