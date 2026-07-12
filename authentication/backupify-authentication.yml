@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/backupify-saas-protection-api.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using API public key as username and private key as
+    password
+  sources:
+  - openapi/backupify-saas-protection-api.yaml

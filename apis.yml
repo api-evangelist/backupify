@@ -38,6 +38,10 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/saas-protection-seats.yaml
 common:
+- type: DomainSecurity
+  url: security/backupify-domain-security.yml
+- type: Authentication
+  url: authentication/backupify-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/backupify
 - type: Website
