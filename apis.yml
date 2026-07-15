@@ -38,6 +38,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/saas-protection-seats.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/backupify-agentic-access.yml
 - type: DomainSecurity
   url: security/backupify-domain-security.yml
 - type: Authentication
