@@ -1,0 +1,16 @@
+{
+  "provider": "backupify",
+  "sources": [
+    "backupify-domains-api-openapi.yml",
+    "backupify-seats-api-openapi.yml"
+  ],
+  "outputs": [
+    "backupify-domains-api-openapi.yml",
+    "backupify-seats-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,183 @@
+{
+  "info": {
+    "_postman_id": "6d3a9855-f84d-4d90-b032-42a8092ffa54",
+    "name": "Backupify SaaS Protection Domains API",
+    "description": "The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management, subscription configuration, and backup domain administration for MSPs and enterprise customers. Authentication uses HTTP Basic authentication with API key credentials.\n\nContact Support:\n Name: Datto/Backupify Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:11:29.000Z",
+    "updatedAt": "2026-07-28T01:11:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d3a9855-f84d-4d90-b032-42a8092ffa54"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "saas",
+          "item": [
+            {
+              "name": "domains",
+              "item": [
+                {
+                  "name": "Backupify SaaS Protection API List Domains",
+                  "id": "31d2e81d-5883-4acb-95f4-c45d447b3d35",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/saas/domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "saas",
+                        "domains"
+                      ]
+                    },
+                    "description": "Retrieves a list of SaaS customer domains with their customer IDs and external subscription information for seat management configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "ae511405-0c30-43d0-81e8-595d812939cd",
+                      "name": "List of SaaS domains",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/saas/domains",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "saas",
+                            "domains"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"domains\": [\n    {\n      \"saasCustomerId\": \"<string>\",\n      \"externalSubscriptionId\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"saasCustomerId\": \"<string>\",\n      \"externalSubscriptionId\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:11:30.000Z",
+                      "updatedAt": "2026-07-28T01:11:30.000Z",
+                      "uid": "35240-ae511405-0c30-43d0-81e8-595d812939cd"
+                    },
+                    {
+                      "id": "76924a98-c5ab-4d84-8191-5a13ca4281b3",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/saas/domains",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "saas",
+                            "domains"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:11:30.000Z",
+                      "updatedAt": "2026-07-28T01:11:30.000Z",
+                      "uid": "35240-76924a98-c5ab-4d84-8191-5a13ca4281b3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:11:30.000Z",
+                  "updatedAt": "2026-07-28T01:11:30.000Z",
+                  "uid": "35240-31d2e81d-5883-4acb-95f4-c45d447b3d35"
+                }
+              ],
+              "id": "3a57ad18-8ce6-47ad-8c74-11919e5301c2",
+              "createdAt": "2026-07-28T01:11:30.000Z",
+              "updatedAt": "2026-07-28T01:11:30.000Z",
+              "uid": "35240-3a57ad18-8ce6-47ad-8c74-11919e5301c2"
+            }
+          ],
+          "id": "a6e41542-1e1f-456c-8371-824b70a6d015",
+          "createdAt": "2026-07-28T01:11:30.000Z",
+          "updatedAt": "2026-07-28T01:11:30.000Z",
+          "uid": "35240-a6e41542-1e1f-456c-8371-824b70a6d015"
+        }
+      ],
+      "id": "d1ecc399-8e09-4fe5-acad-4bf5436713c3",
+      "createdAt": "2026-07-28T01:11:30.000Z",
+      "updatedAt": "2026-07-28T01:11:30.000Z",
+      "uid": "35240-d1ecc399-8e09-4fe5-acad-4bf5436713c3"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.datto.com"
+    }
+  ]
+}
