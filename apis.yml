@@ -42,10 +42,6 @@ apis:
   - type: Documentation
     url: >-
       https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm
-  - type: X-NaftikoCapability
-    url: capabilities/saas-protection-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/saas-protection-seats.yaml
 - aid: backupify:backupify-seats-api
   name: Backupify Seats API
   description: User and resource seat licensing and management
@@ -58,10 +54,6 @@ apis:
   - type: Documentation
     url: >-
       https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm
-  - type: X-NaftikoCapability
-    url: capabilities/saas-protection-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/saas-protection-seats.yaml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/backupify/overview
