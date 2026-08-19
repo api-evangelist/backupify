@@ -1,0 +1,502 @@
+{
+  "item": [
+    {
+      "id": "cadc35b7-4726-4c24-8d0c-9eded0173ecb",
+      "name": "Seats",
+      "description": {
+        "content": "User and resource seat licensing and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53f30114-b869-482b-bdc2-bd5f985ee87a",
+          "name": "Backupify SaaS Protection API List Seats",
+          "request": {
+            "name": "Backupify SaaS Protection API List Seats",
+            "description": {
+              "content": "Lists all seats (users, shared mailboxes, sites, team sites, teams) for a given SaaS customer. Returns remote IDs needed for licensing operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "saas",
+                ":saasCustomerId",
+                "seats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "saasCustomerId",
+                  "description": "(Required) The unique SaaS customer identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "adcf25ae-b004-4eef-8531-b76958316f03",
+              "name": "List of seats for the customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "seats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"seats\": [\n    {\n      \"remoteId\": \"user-abc123\",\n      \"displayName\": \"John Smith\",\n      \"email\": \"jsmith@company.com\",\n      \"seatType\": \"User\",\n      \"licenseStatus\": \"Licensed\",\n      \"lastBackup\": \"2026-04-18T14:30:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2d7631e-30fa-4937-be7d-3b97e4637c4a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "seats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b9de9d2-f86f-455c-be95-2ad1c84300c6",
+              "name": "Customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "seats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98f5b8a9-3bec-4ca7-9ad5-d12910241ee9",
+          "name": "Backupify SaaS Protection API Bulk Seat Change",
+          "request": {
+            "name": "Backupify SaaS Protection API Bulk Seat Change",
+            "description": {
+              "content": "Updates multiple Microsoft 365 or Google Workspace seats simultaneously. Supports licensing, unlicensing, and pausing up to 100 seats per request. Supported seat types include User, SharedMailbox, Site, TeamSite, and Team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "saas",
+                ":saasCustomerId",
+                "externalSubscriptionId",
+                "bulkSeatChange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "saasCustomerId",
+                  "description": "(Required) The unique SaaS customer identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seats\": [\n    {\n      \"remoteId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"seatType\": \"<string>\"\n    },\n    {\n      \"remoteId\": \"<string>\",\n      \"action\": \"<string>\",\n      \"seatType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54c10ae4-bdb3-4e00-87d2-fa43c3d7f1a3",
+              "name": "Seat changes applied successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "externalSubscriptionId",
+                    "bulkSeatChange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"seats\": [\n    {\n      \"remoteId\": \"user-abc123\",\n      \"action\": \"License\",\n      \"seatType\": \"User\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"remoteId\": \"user-abc123\",\n      \"success\": true,\n      \"message\": \"Seat licensed successfully\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27e569e3-1213-4f72-9478-6ae83083ba3e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "externalSubscriptionId",
+                    "bulkSeatChange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"seats\": [\n    {\n      \"remoteId\": \"user-abc123\",\n      \"action\": \"License\",\n      \"seatType\": \"User\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06a4ac01-b450-4308-a9f5-676184dbc1db",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    ":saasCustomerId",
+                    "externalSubscriptionId",
+                    "bulkSeatChange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "saasCustomerId",
+                      "description": "(Required) The unique SaaS customer identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"seats\": [\n    {\n      \"remoteId\": \"user-abc123\",\n      \"action\": \"License\",\n      \"seatType\": \"User\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.datto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "363ab69f-0032-404d-9690-36b54aefb4db",
+    "name": "Backupify SaaS Protection Domains Seats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management, subscription configuration, and backup domain administration for MSPs and enterprise customers. Authentication uses HTTP Basic authentication with API key credentials.\n\nContact Support:\n Name: Datto/Backupify Support",
+      "type": "text/plain"
+    }
+  }
+}

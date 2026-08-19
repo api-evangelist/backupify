@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Backupify SaaS Protection Domains Seats API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Backupify SaaS Protection API List Seats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.datto.com/v1/saas/:saasCustomerId/seats",
+            "params": [
+              {
+                "name": "saasCustomerId",
+                "value": "cust-001",
+                "type": "path",
+                "description": "The unique SaaS customer identifier"
+              }
+            ]
+          },
+          "docs": "Lists all seats (users, shared mailboxes, sites, team sites, teams) for a given SaaS customer. Returns remote IDs needed for licensing operations."
+        },
+        {
+          "info": {
+            "name": "Backupify SaaS Protection API Bulk Seat Change",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.datto.com/v1/saas/:saasCustomerId/externalSubscriptionId/bulkSeatChange",
+            "params": [
+              {
+                "name": "saasCustomerId",
+                "value": "cust-001",
+                "type": "path",
+                "description": "The unique SaaS customer identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates multiple Microsoft 365 or Google Workspace seats simultaneously. Supports licensing, unlicensing, and pausing up to 100 seats per request. Supported seat types include User, SharedMailbox, Site, TeamSite, and Team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

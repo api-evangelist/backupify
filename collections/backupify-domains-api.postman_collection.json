@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "b0f7370e-8829-44f6-a692-0e6331a9c0b1",
+      "name": "Domains",
+      "description": {
+        "content": "SaaS domain and customer account management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7efe6747-2801-4c87-9dfe-15feee521cec",
+          "name": "Backupify SaaS Protection API List Domains",
+          "request": {
+            "name": "Backupify SaaS Protection API List Domains",
+            "description": {
+              "content": "Retrieves a list of SaaS customer domains with their customer IDs and external subscription information for seat management configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "saas",
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39d7e816-d94c-41e6-865e-11963e8007f9",
+              "name": "List of SaaS domains",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"domains\": [\n    {\n      \"saasCustomerId\": \"cust-001\",\n      \"externalSubscriptionId\": \"sub-abc123\",\n      \"domain\": \"company.onmicrosoft.com\",\n      \"status\": \"active\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2366e13d-55f8-4f77-83ae-19c3debce6e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "saas",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 401,\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.datto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f35ec820-c61c-4420-b5d5-950becfcedb5",
+    "name": "Backupify SaaS Protection Domains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management, subscription configuration, and backup domain administration for MSPs and enterprise customers. Authentication uses HTTP Basic authentication with API key credentials.\n\nContact Support:\n Name: Datto/Backupify Support",
+      "type": "text/plain"
+    }
+  }
+}

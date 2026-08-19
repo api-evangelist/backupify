@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Backupify SaaS Protection Domains API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Backupify SaaS Protection API List Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.datto.com/v1/saas/domains"
+          },
+          "docs": "Retrieves a list of SaaS customer domains with their customer IDs and external subscription information for seat management configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
