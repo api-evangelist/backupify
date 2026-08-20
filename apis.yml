@@ -23,6 +23,12 @@ tags:
 - SaaS Backup
 - Data Protection
 - Cloud Backup
+- Microsoft-365
+- Google Workspace
+tags_raw:
+- SaaS Backup
+- Data Protection
+- Cloud Backup
 - Microsoft 365
 - Google Workspace
 url: https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/apis.yml
