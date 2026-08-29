@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Backupify SaaS Protection Domains API
   description: The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management, subscription configuration, and backup domain administration for MSPs and enterprise customers. Authentication uses HTTP Basic authentication with API key credentials.
@@ -51,27 +51,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Domain:
-      title: Domain
-      type: object
-      description: A SaaS customer domain with backup subscription information
-      properties:
-        saasCustomerId:
-          type: string
-          description: Unique SaaS customer identifier
-          example: cust-001
-        externalSubscriptionId:
-          type: string
-          description: External subscription identifier for seat management
-          example: sub-abc123
-        domain:
-          type: string
-          description: The domain name (e.g., company.onmicrosoft.com)
-          example: company.onmicrosoft.com
-        status:
-          type: string
-          description: Domain backup status
-          example: active
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -94,6 +73,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Domain'
+    Domain:
+      title: Domain
+      type: object
+      description: A SaaS customer domain with backup subscription information
+      properties:
+        saasCustomerId:
+          type: string
+          description: Unique SaaS customer identifier
+          example: cust-001
+        externalSubscriptionId:
+          type: string
+          description: External subscription identifier for seat management
+          example: sub-abc123
+        domain:
+          type: string
+          description: The domain name (e.g., company.onmicrosoft.com)
+          example: company.onmicrosoft.com
+        status:
+          type: string
+          description: Domain backup status
+          example: active
   securitySchemes:
     BasicAuth:
       type: http

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Backupify SaaS Protection Domains Seats API
   description: The Backupify (Datto) SaaS Protection REST API provides programmatic access to manage cloud-to-cloud backup for Microsoft 365 and Google Workspace. It enables seat management, subscription configuration, and backup domain administration for MSPs and enterprise customers. Authentication uses HTTP Basic authentication with API key credentials.
@@ -128,15 +128,63 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BulkSeatChangeResponse:
-      title: BulkSeatChangeResponse
+    SeatChangeResult:
+      title: SeatChangeResult
       type: object
-      description: Results of bulk seat change operations
+      description: Result of a single seat change operation
       properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeatChangeResult'
+        remoteId:
+          type: string
+          description: Remote identifier for the seat
+          example: user-abc123
+        success:
+          type: boolean
+          description: Whether the operation succeeded
+          example: true
+        message:
+          type: string
+          description: Description of the result
+          example: Seat licensed successfully
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+    SeatChange:
+      title: SeatChange
+      type: object
+      description: A single seat change action
+      properties:
+        remoteId:
+          type: string
+          description: Remote identifier for the seat
+          example: user-abc123
+        action:
+          type: string
+          enum:
+          - License
+          - Unlicense
+          - Pause
+          description: Action to perform on the seat
+          example: License
+        seatType:
+          type: string
+          enum:
+          - User
+          - SharedMailbox
+          - Site
+          - TeamSite
+          - Team
+          description: Type of seat
+          example: User
     Seat:
       title: Seat
       type: object
@@ -178,42 +226,15 @@ components:
           format: date-time
           description: Timestamp of last successful backup
           example: '2026-04-18T14:30:00Z'
-    SeatsResponse:
-      title: SeatsResponse
+    BulkSeatChangeResponse:
+      title: BulkSeatChangeResponse
       type: object
-      description: Response containing a list of seats for a customer
+      description: Results of bulk seat change operations
       properties:
-        seats:
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/Seat'
-    SeatChange:
-      title: SeatChange
-      type: object
-      description: A single seat change action
-      properties:
-        remoteId:
-          type: string
-          description: Remote identifier for the seat
-          example: user-abc123
-        action:
-          type: string
-          enum:
-          - License
-          - Unlicense
-          - Pause
-          description: Action to perform on the seat
-          example: License
-        seatType:
-          type: string
-          enum:
-          - User
-          - SharedMailbox
-          - Site
-          - TeamSite
-          - Team
-          description: Type of seat
-          example: User
+            $ref: '#/components/schemas/SeatChangeResult'
     BulkSeatChangeRequest:
       title: BulkSeatChangeRequest
       type: object
@@ -224,36 +245,15 @@ components:
           items:
             $ref: '#/components/schemas/SeatChange'
           description: List of seat changes (max 100 per request)
-    ErrorResponse:
-      title: ErrorResponse
+    SeatsResponse:
+      title: SeatsResponse
       type: object
-      description: API error response
+      description: Response containing a list of seats for a customer
       properties:
-        code:
-          type: integer
-          description: HTTP status code
-          example: 401
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-    SeatChangeResult:
-      title: SeatChangeResult
-      type: object
-      description: Result of a single seat change operation
-      properties:
-        remoteId:
-          type: string
-          description: Remote identifier for the seat
-          example: user-abc123
-        success:
-          type: boolean
-          description: Whether the operation succeeded
-          example: true
-        message:
-          type: string
-          description: Description of the result
-          example: Seat licensed successfully
+        seats:
+          type: array
+          items:
+            $ref: '#/components/schemas/Seat'
   securitySchemes:
     BasicAuth:
       type: http
