@@ -1,8 +1,7 @@
 {
   "provider": "backupify",
   "sources": [
-    "backupify-domains-api-openapi.yml",
-    "backupify-seats-api-openapi.yml"
+    "_ae-authored/backupify-saas-protection-api.yaml"
   ],
   "outputs": [
     "backupify-domains-api-openapi.yml",
@@ -12,9 +11,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "backupify-domains-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "backupify-seats-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "backupify-saas-protection-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "backupify-domains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "backupify-seats-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
