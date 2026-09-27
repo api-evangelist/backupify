@@ -128,6 +128,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    BulkSeatChangeResponse:
+      title: BulkSeatChangeResponse
+      type: object
+      description: Results of bulk seat change operations
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeatChangeResult'
     SeatChange:
       title: SeatChange
       type: object
@@ -172,16 +181,28 @@ components:
           type: string
           description: Description of the result
           example: Seat licensed successfully
-    BulkSeatChangeRequest:
-      title: BulkSeatChangeRequest
+    SeatsResponse:
+      title: SeatsResponse
       type: object
-      description: Request to change multiple seat licenses
+      description: Response containing a list of seats for a customer
       properties:
         seats:
           type: array
           items:
-            $ref: '#/components/schemas/SeatChange'
-          description: List of seat changes (max 100 per request)
+            $ref: '#/components/schemas/Seat'
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
     Seat:
       title: Seat
       type: object
@@ -223,37 +244,16 @@ components:
           format: date-time
           description: Timestamp of last successful backup
           example: '2026-04-18T14:30:00Z'
-    ErrorResponse:
-      title: ErrorResponse
+    BulkSeatChangeRequest:
+      title: BulkSeatChangeRequest
       type: object
-      description: API error response
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-          example: 401
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-    BulkSeatChangeResponse:
-      title: BulkSeatChangeResponse
-      type: object
-      description: Results of bulk seat change operations
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeatChangeResult'
-    SeatsResponse:
-      title: SeatsResponse
-      type: object
-      description: Response containing a list of seats for a customer
+      description: Request to change multiple seat licenses
       properties:
         seats:
           type: array
           items:
-            $ref: '#/components/schemas/Seat'
+            $ref: '#/components/schemas/SeatChange'
+          description: List of seat changes (max 100 per request)
   securitySchemes:
     BasicAuth:
       type: http

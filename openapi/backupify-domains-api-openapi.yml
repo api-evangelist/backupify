@@ -51,15 +51,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DomainsResponse:
-      title: DomainsResponse
-      type: object
-      description: Response containing a list of SaaS domains
-      properties:
-        domains:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -73,6 +64,15 @@ components:
           type: string
           description: Error message
           example: Unauthorized
+    DomainsResponse:
+      title: DomainsResponse
+      type: object
+      description: Response containing a list of SaaS domains
+      properties:
+        domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
     Domain:
       title: Domain
       type: object
