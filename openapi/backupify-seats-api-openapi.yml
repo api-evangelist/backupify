@@ -128,55 +128,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BulkSeatChangeRequest:
-      title: BulkSeatChangeRequest
-      type: object
-      description: Request to change multiple seat licenses
-      properties:
-        seats:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeatChange'
-          description: List of seat changes (max 100 per request)
-    ErrorResponse:
-      title: ErrorResponse
-      type: object
-      description: API error response
-      properties:
-        code:
-          type: integer
-          description: HTTP status code
-          example: 401
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-    BulkSeatChangeResponse:
-      title: BulkSeatChangeResponse
-      type: object
-      description: Results of bulk seat change operations
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeatChangeResult'
-    SeatChangeResult:
-      title: SeatChangeResult
-      type: object
-      description: Result of a single seat change operation
-      properties:
-        remoteId:
-          type: string
-          description: Remote identifier for the seat
-          example: user-abc123
-        success:
-          type: boolean
-          description: Whether the operation succeeded
-          example: true
-        message:
-          type: string
-          description: Description of the result
-          example: Seat licensed successfully
     Seat:
       title: Seat
       type: object
@@ -218,6 +169,19 @@ components:
           format: date-time
           description: Timestamp of last successful backup
           example: '2026-04-18T14:30:00Z'
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+          example: 401
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
     SeatsResponse:
       title: SeatsResponse
       type: object
@@ -227,6 +191,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Seat'
+    BulkSeatChangeResponse:
+      title: BulkSeatChangeResponse
+      type: object
+      description: Results of bulk seat change operations
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeatChangeResult'
+    SeatChangeResult:
+      title: SeatChangeResult
+      type: object
+      description: Result of a single seat change operation
+      properties:
+        remoteId:
+          type: string
+          description: Remote identifier for the seat
+          example: user-abc123
+        success:
+          type: boolean
+          description: Whether the operation succeeded
+          example: true
+        message:
+          type: string
+          description: Description of the result
+          example: Seat licensed successfully
     SeatChange:
       title: SeatChange
       type: object
@@ -254,6 +244,16 @@ components:
           - Team
           description: Type of seat
           example: User
+    BulkSeatChangeRequest:
+      title: BulkSeatChangeRequest
+      type: object
+      description: Request to change multiple seat licenses
+      properties:
+        seats:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeatChange'
+          description: List of seat changes (max 100 per request)
   securitySchemes:
     BasicAuth:
       type: http
