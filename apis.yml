@@ -75,6 +75,12 @@ apis:
     url: >-
       https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm
 common:
+- type: Plans
+  url: plans/backupify-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/backupify-rate-limits.yml
+- type: FinOps
+  url: finops/backupify-finops.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/backupify/overview
 - type: AgenticAccess
