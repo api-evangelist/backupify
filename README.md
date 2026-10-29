@@ -1,4 +1,4 @@
-# Backupify (backupify)
+# Backupify
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,119 +66,181 @@
 
 Backupify (by Datto/Kaseya) is a SaaS backup platform providing automated cloud-to-cloud data protection for Google Workspace and Microsoft 365. It offers seat-level backup coverage for users, shared mailboxes, SharePoint sites, team sites, and Microsoft Teams. The SaaS Protection REST API enables MSPs and enterprise IT teams to automate domain administration and seat licensing programmatically.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/backupify/refs/heads/main/apis.yml)
+**Areas:** SaaS Backup · Data Protection · Cloud Backup · Microsoft 365 · Google Workspace
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Backupify on APIs.io
 
-## Tags:
+Everything profiled for Backupify is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/backupify/](https://apis.io/providers/backupify/)** — or go straight to one of the APIs or properties below.
 
- - SaaS Backup, Data Protection, Cloud Backup, Microsoft 365, Google Workspace
+### APIs (2)
 
-## Timestamps
+- [Backupify Domains API](https://apis.io/apis/backupify/backupify-domains-api/) — SaaS domain and customer account management
+- [Backupify Seats API](https://apis.io/apis/backupify/backupify-seats-api/) — User and resource seat licensing and management
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Backupify SaaS Protection API
-The Backupify SaaS Protection REST API enables programmatic management of cloud-to-cloud backup for Microsoft 365 and Google Workspace. Covers domain listing, seat enumeration, and bulk seat licensing operations. Authentication uses HTTP Basic auth with API key credentials.
+#### Agentic access (1)
 
-**Human URL:** [https://www.backupify.com/](https://www.backupify.com/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Backupify Agentic Access](https://apis.io/agentic-access/backupify/backupify-agentic-access/)
 
- - SaaS Backup, Data Protection, Microsoft 365, Google Workspace
+#### JSON Schema (8)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm)
-- [OpenAPI](openapi/backupify-saas-protection-api.yaml)
+- [BulkSeatChangeRequest](https://apis.io/schemas/backupify/saas-protection-api-bulk-seat-change-request/)
+- [BulkSeatChangeResponse](https://apis.io/schemas/backupify/saas-protection-api-bulk-seat-change-response/)
+- [Domain](https://apis.io/schemas/backupify/saas-protection-api-domain/)
+- [DomainsResponse](https://apis.io/schemas/backupify/saas-protection-api-domains-response/)
+- [Seat](https://apis.io/schemas/backupify/saas-protection-api-seat/)
+- [SeatChange](https://apis.io/schemas/backupify/saas-protection-api-seat-change/)
+- [SeatChangeResult](https://apis.io/schemas/backupify/saas-protection-api-seat-change-result/)
+- [SeatsResponse](https://apis.io/schemas/backupify/saas-protection-api-seats-response/)
 
-## Common Properties
+#### JSON Structure (8)
+
+Data models expressed in JSON Structure.
+
+- [Saas Protection Api Bulk Seat Change Request Structure](https://apis.io/json-structure/backupify/saas-protection-api-bulk-seat-change-request-structure/)
+- [Saas Protection Api Bulk Seat Change Response Structure](https://apis.io/json-structure/backupify/saas-protection-api-bulk-seat-change-response-structure/)
+- [Saas Protection Api Domain Structure](https://apis.io/json-structure/backupify/saas-protection-api-domain-structure/)
+- [Saas Protection Api Domains Response Structure](https://apis.io/json-structure/backupify/saas-protection-api-domains-response-structure/)
+- [Saas Protection Api Seat Change Result Structure](https://apis.io/json-structure/backupify/saas-protection-api-seat-change-result-structure/)
+- [Saas Protection Api Seat Change Structure](https://apis.io/json-structure/backupify/saas-protection-api-seat-change-structure/)
+- [Saas Protection Api Seat Structure](https://apis.io/json-structure/backupify/saas-protection-api-seat-structure/)
+- [Saas Protection Api Seats Response Structure](https://apis.io/json-structure/backupify/saas-protection-api-seats-response-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Backupify Context](https://apis.io/jsonld/backupify/backupify-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Backupify Vocabulary](https://apis.io/vocabularies/backupify/backupify-vocabulary/)
+
+#### Examples (8)
+
+Example requests and responses.
+
+- [Saas Protection Api Bulk Seat Change Request Example](https://apis.io/examples/backupify/saas-protection-api-bulk-seat-change-request-example/)
+- [Saas Protection Api Bulk Seat Change Response Example](https://apis.io/examples/backupify/saas-protection-api-bulk-seat-change-response-example/)
+- [Saas Protection Api Domain Example](https://apis.io/examples/backupify/saas-protection-api-domain-example/)
+- [Saas Protection Api Domains Response Example](https://apis.io/examples/backupify/saas-protection-api-domains-response-example/)
+- [Saas Protection Api Seat Change Example](https://apis.io/examples/backupify/saas-protection-api-seat-change-example/)
+- [Saas Protection Api Seat Change Result Example](https://apis.io/examples/backupify/saas-protection-api-seat-change-result-example/)
+- [Saas Protection Api Seat Example](https://apis.io/examples/backupify/saas-protection-api-seat-example/)
+- [Saas Protection Api Seats Response Example](https://apis.io/examples/backupify/saas-protection-api-seats-response-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Backupify SaaS Protection Domains API](https://apis.io/collections/backupify/open-backupify-domains-api/)
+- [Backupify SaaS Protection Domains Seats API](https://apis.io/collections/backupify/open-backupify-seats-api/)
+- [Backupify SaaS Protection Domains API](https://apis.io/collections/backupify/postman-backupify-domains-api/)
+- [Backupify SaaS Protection Domains Seats API](https://apis.io/collections/backupify/postman-backupify-seats-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Backupify — jsonschema rules](https://apis.io/rules/backupify/backupify-jsonschema-spectral-rules/)
+- [Backupify API Rules](https://apis.io/rules/backupify/backupify-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Backupify Authentication](https://apis.io/security/backupify/backupify-authentication/)
+- [Backupify Domain Security](https://apis.io/security/backupify/backupify-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Backupify Plans Pricing](https://apis.io/plans/backupify/backupify-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Backupify Rate Limits](https://apis.io/rate-limits/backupify/backupify-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Backupify Finops](https://apis.io/finops/backupify/backupify-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.backupify.com)
 - [Documentation](https://saasprotection.datto.com/help/M365/Content/Other_Administrative_Tasks/using-rest-api-saas-protection.htm)
-- [Portal](https://portal.dattobackup.com)
 - [Pricing](https://www.backupify.com/pricing)
-- [Blog](https://www.datto.com/blog/)
 - [Support](https://www.datto.com/support/)
-- [TermsOfService](https://www.datto.com/legal/terms-and-conditions/)
-- [PrivacyPolicy](https://www.datto.com/legal/privacy-policy/)
-- [GitHubOrganization](https://github.com/backupify)
+- [Blog](https://www.datto.com/blog/)
+- [Terms of service](https://www.datto.com/legal/terms-and-conditions/)
+- [Privacy policy](https://www.datto.com/legal/privacy-policy/)
+- [GitHub](https://github.com/backupify)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Microsoft 365 Backup | Automated cloud-to-cloud backup for Exchange, OneDrive, SharePoint, and Teams. |
-| Google Workspace Backup | Automated backup for Gmail, Drive, Contacts, and Calendar. |
-| Seat-Level Control | License, unlicense, or pause backup at the individual user, mailbox, site, or team level. |
-| Bulk Seat Management | Manage up to 100 seat changes in a single API call. |
-| MSP Multi-Tenant | Manage backup across multiple customer domains from a single pane of glass. |
-| Point-in-Time Recovery | Restore data to any point in time with granular item-level recovery. |
+**Kin Score 29.8** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 22.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 28.9 |
 
-| Name | Description |
-|------|-------------|
-| SaaS Data Protection | Protect Microsoft 365 and Google Workspace data from accidental deletion, ransomware, and insider threats. |
-| MSP Backup Management | Automate backup seat provisioning and de-provisioning across multiple customer tenants. |
-| Compliance and Archival | Maintain immutable backups for compliance, legal hold, and audit requirements. |
-| Migration Support | Backup source data before and during cloud-to-cloud migrations. |
+**Agent readiness 28.7** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Microsoft 365 | Native integration with Exchange Online, OneDrive, SharePoint, and Microsoft Teams. |
-| Google Workspace | Native integration with Gmail, Google Drive, Contacts, and Calendar. |
-| Kaseya VSA | Integration with Kaseya RMM for MSP workflow automation. |
-| Datto RMM | Integration with Datto RMM for endpoint and SaaS backup orchestration. |
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/backupify/](https://apis.io/providers/backupify/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Backupify SaaS Protection API](openapi/backupify-saas-protection-api.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Backupify: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Domain](json-schema/saas-protection-api-domain-schema.json)
-- [Seat](json-schema/saas-protection-api-seat-schema.json)
-- [BulkSeatChangeRequest](json-schema/saas-protection-api-bulk-seat-change-request-schema.json)
-- [+ 5 more schemas](json-schema/)
-
-### JSON-LD
-
-- [Backupify JSON-LD Context](json-ld/backupify-context.jsonld)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Backupify SaaS Protection API](capabilities/shared/saas-protection-api.yaml) — 3 operations for domain listing, seat listing, and bulk seat management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [SaaS Backup Management](capabilities/saas-backup-management.yaml) | SaaS Protection API | 3 | MSP Technician, IT Administrator |
-
-## Vocabulary
-
-- [Backupify Vocabulary](vocabulary/backupify-vocabulary.yaml) — Unified taxonomy mapping 2 resources, 4 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Backupify Spectral Rules](rules/backupify-spectral-rules.yml) — 12 rules across 5 categories enforcing Backupify API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/backupify/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
